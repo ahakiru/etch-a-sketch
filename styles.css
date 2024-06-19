@@ -1,0 +1,12 @@
+div {
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    display: flex;
+
+}
+body {
+    display: flex;
+    max-width: 640px;
+    flex-wrap: wrap;
+}

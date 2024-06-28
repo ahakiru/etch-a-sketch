@@ -1,8 +1,9 @@
 const container = document.querySelector(".container");
 
-let create = document.querySelector("#create");
+let clearColor = document.querySelector("#clearColor");
 let black = document.querySelector("#black");
 let random = document.querySelector("#random");
+let grey = document.querySelector("#grey");
 
 function clearGrid() {
     container.innerHTML = '';
@@ -35,8 +36,11 @@ function randomColor() {
 
 let div = container.querySelectorAll("div");
 
-create.addEventListener("click", function () {
-    clearGrid(); /* removes grid, doesn't create a new one yet*/
+clearColor.addEventListener("click", function () {
+    div.forEach(function (square) {
+        square.id = "";
+        square.style.backgroundColor = "white";
+    })
 });
 
 black.addEventListener("click", function() {
@@ -60,7 +64,17 @@ random.addEventListener("click", function() {
          });
      });
 })
+grey.addEventListener("click", function () {
+    clearGrid();
+    createGrid();
+    div.forEach(function (square) {
+        square.style.backgroundColor = "black";
+        square.style.opacity = 0;
+        square.addEventListener("mouseenter", (event) => {
+            if (parseFloat(square.style.opacity) < 1) {
+                square.style.opacity = parseFloat(square.style.opacity) + 0.1;
+            } ;
+         });
+     });
 
-container.addEventListener("click", (event) => {
-    console.log("click");
-});
+})

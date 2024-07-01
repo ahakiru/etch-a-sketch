@@ -39,8 +39,12 @@ let div = container.querySelectorAll("div");
 clearColor.addEventListener("click", function () {
     div.forEach(function (square) {
         square.id = "";
-        square.style.backgroundColor = "white";
-    })
+        if (square.style.opacity !== "") {
+            square.style.opacity = 0;
+        } else {
+            square.style.backgroundColor = "";
+        };
+    });
 });
 
 black.addEventListener("click", function() {
